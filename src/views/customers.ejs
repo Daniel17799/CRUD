@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud Node Mysql</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+</head>
+<body>
+    
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="/" class="navbar-brand">CRUD Node js Mysql</a>
+    </nav>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-7">
+        <table class="table table-border table-hover">
+        <thead>
+            <tr>
+                <th>nº </th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Telefono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+            <tbody>
+                <% if(data) {%>
+                    <% for(let i=0; i< data.length; i++) { %>
+                    <tr>
+                        <td><%= (i+1) %></td>
+                        <td><%= data[i].name%></td>
+                        <td><%= data[i].address%></td>
+                        <td><%= data[i].phone%></td>
+                        <td>
+                            <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Borrar comprador</a>
+                            <a href="/update/<%= data[i].id %>" class="btn btn-info">Actualizar comprador</a>
+                        </td>
+                    </tr>
+                <% } %>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <form action="/add" method="post">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="address" placeholder="Address" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="phone" placeholder="Phone" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        Guardar comprador
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
